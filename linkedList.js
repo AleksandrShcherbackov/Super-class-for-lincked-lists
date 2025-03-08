@@ -9,6 +9,24 @@ export class LinkedList {
     this.last = null;
   }
 
+  static mergeTwoLists (list1, list2) {
+    let dummy = new LinkedList();
+    let node1 = list1.first;
+    let node2 = list2.first;
+
+    while (node1 || node2) {
+      if (node1?.value < node2?.value) { // Сравниваем значения
+        dummy.addNode(node1.value);
+        node1 = node1.next;
+      } else {
+        dummy.addNode(node2.value);
+        node2 = node2.next;
+      }
+    }
+
+    return dummy;
+  }
+
   addNode (value) {
     let node = new ListNode(value, null);
 
