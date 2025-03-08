@@ -27,6 +27,20 @@ export class LinkedList {
     return dummy;
   }
 
+  static getIntersectionOfTwoLists(listA, listB) {
+    if (!listA.first || !listB.first) return null;
+
+    let pointerA = listA.first;
+    let pointerB = listB.first;
+
+    while (pointerA !== pointerB) {
+      pointerA = pointerA ? pointerA.next : listB.first;
+      pointerB = pointerB ? pointerB.next : listA.first;
+    }
+
+    return pointerA; // либо узел пересечения, либо null
+  }
+
   addNode (value) {
     let node = new ListNode(value, null);
 
